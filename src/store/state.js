@@ -1,6 +1,4 @@
 
 
 
-export default {
-    meals: ["Macarrao"]
-}
+export const meals= ['Macarrao']
