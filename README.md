@@ -1,7 +1,16 @@
-# Vue 3 + Vite
+# Meal menu (Cardápio de pratos).
 
-This template should help get you started developing with Vue 3 in Vite. The template uses Vue 3 `<script setup>` SFCs, check out the [script setup docs](https://v3.vuejs.org/api/sfc-script-setup.html#sfc-script-setup) to learn more.
+Um cardápio de pratos onde o usuário pode pesquisar por nome, identificador e ordem alfabética. Os pratos contém seus respectivos nomes e descrições.
 
-## Recommended IDE Setup
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+Este é um projeto Vue.js que utiliza o framework Vuetify para criar uma interface de usuário responsiva e rica em componentes. O projeto inclui exemplos de integração com Vue Router, Vuex (se aplicável), e o uso de ícones do Material Design Icons através do Vuetify.
 
-- [VS Code](https://code.visualstudio.com/) + [Vue - Official](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (previously Volar) and disable Vetur
+Tecnologias utilizadas para o desenvolvimento:
+-Vue.js 3 Composition API
+-Integração com Vue Router: Navegação entre diferentes páginas da aplicação.
+-Componentes do Vuetify: Utilização de diversos componentes pré-construídos do Vuetify para criar uma interface consistente e moderna.
+-Gestão de Estado: Utilização do Vuex para gerenciamento de estado centralizado (se aplicável).
+-Axios para se comunicar com a  API.
+
+Requisitos para rodar o projeto:
+-Node.js e npm (ou yarn) instalados localmente.
