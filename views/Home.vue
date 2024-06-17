@@ -1,8 +1,9 @@
 <template>
   <VCard class="pa-5 d-flex justify-center flex-column" width="1200px" variant="outlined">
+    
     <VTextField
       v-model="search"
-      label="Pesquisar um prato"
+      label="Pesquisar por nome ou código"
       type="text"
       variant="outlined"
       clearable
@@ -13,7 +14,7 @@
 
     <VDataTable
       :headers="headers"
-      :items="filteredPratos"
+      :items="pratosFiltrados"
       :items-per-page="10"
       class="elevation-1"
     ></VDataTable>
@@ -21,30 +22,29 @@
 </template>
 
 <script setup>
-import { computed, onMounted, ref, watch } from "vue";
-import { VCard, VTextField, VDataTable } from "vuetify/components";
-import store from "../src/store";
-import axiosClient from "../src/service/axiosCliente";
-
+import { computed, onMounted, ref, watch } from 'vue';
+import { VCard, VTextField, VDataTable } from 'vuetify/components';
+import store from '../src/store';
+import axiosClient from '../src/service/axiosCliente';
 const meals = computed(() => store.state.meals);
-const letters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ".split("");
+const letters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'.split('');
 const pratos = ref([]);
-const search = ref("");
-const filteredPratos = ref([]);
+const search = ref('');
+const pratosFiltrados = ref([]);
 
 const headers = [
-  { text: "ID", value: "idIngredient" },
-  { text: "Ingredient", value: "strIngredient" },
-  { text: "Description", value: "strDescription" },
-  { text: "Type", value: "strType" },
+  { text: 'ID', value: 'idIngredient' },
+  { text: 'Ingredient', value: 'strIngredient' },
+  { text: 'Description', value: 'strDescription' },
+  { text: 'Type', value: 'strType' }
 ];
 
-const filterMeals = () => {
+const filtrarPratos = () => {
   const searchTerm = search.value.toLowerCase();
   if (!searchTerm) {
-    filteredPratos.value = pratos.value;
+    pratosFiltrados.value = pratos.value;
   } else {
-    filteredPratos.value = pratos.value.filter(prato =>
+    pratosFiltrados.value = pratos.value.filter(prato =>
       prato.idIngredient.toLowerCase().includes(searchTerm) ||
       prato.strIngredient.toLowerCase().includes(searchTerm)
     );
@@ -53,10 +53,10 @@ const filterMeals = () => {
 
 onMounted(async () => {
   try {
-    const response = await axiosClient.get("/list.php?i=list");
+    const response = await axiosClient.get('/list.php?i=list');
     if (response.data.meals) {
       pratos.value = response.data.meals;
-      filterMeals(); 
+      filtrarPratos();
     } else {
       pratos.value = [];
     }
@@ -65,8 +65,5 @@ onMounted(async () => {
   }
 });
 
-
-watch(search, () => {
-  filterMeals();
-});
+watch(search, filtrarPratos);
 </script>

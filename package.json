@@ -9,8 +9,12 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@mdi/font": "^7.4.47",
+    "@tabler/icons": "^3.6.0",
+    "@tabler/icons-vue": "^3.6.0",
     "axios": "^1.7.2",
     "vue": "^3.4.21",
+    "vue-navigation-bar": "^6.1.0",
     "vue-router": "^4.3.2",
     "vuetify": "^3.6.8",
     "vuex": "^4.0.2"
